@@ -4,15 +4,17 @@ import miniguru.springframework.sfgpetclinic.model.Specialty;
 import miniguru.springframework.sfgpetclinic.model.Vet;
 import miniguru.springframework.sfgpetclinic.services.SpecialtyService;
 import miniguru.springframework.sfgpetclinic.services.VetService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
+@Profile({"default", "map"})
+public class VetMapService extends AbstractMapService<Vet, Long> implements VetService {
     private final SpecialtyService specialtyService;
 
-    public VetServiceMap(SpecialtyService specialtyService) {
+    public VetMapService(SpecialtyService specialtyService) {
         this.specialtyService = specialtyService;
     }
 
